@@ -27,7 +27,6 @@ import {
   OpenAIDefaultValues,
 } from '../../lib/types'
 import {
-  deeplFormalityLevelOptions,
   translationFormats,
   translationServiceOptions,
 } from '../../lib/constants'
@@ -80,13 +79,6 @@ export default function FieldAddon({ ctx }: Props) {
     pluginGlobalParameters.topP ??
     OpenAIDefaultValues.topP
 
-  const deeplGlossaryId =
-    pluginParameters.deeplGlossaryId || pluginGlobalParameters.deeplGlossaryId
-
-  const deeplFormalityLevelValue =
-    pluginGlobalParameters.deeplFormalityLevel?.value ||
-    deeplFormalityLevelOptions[0].value
-
   const fieldValue: any = get(ctx.formValues, ctx.fieldPath)
   const currentLocale: string = ctx.locale
   const locales: string[] = ctx.formValues.internalLocales as string[]
@@ -121,18 +113,11 @@ export default function FieldAddon({ ctx }: Props) {
       for (const locale of languages) {
         let translatedField
         const options: TranslationOptions = {
-          fromLocale: getSupportedFromLocale(
-            fromLocale || locales[0],
-            translationServiceValue,
-          ),
-          toLocale: getSupportedToLocale(locale, translationServiceValue),
+          fromLocale: getSupportedFromLocale(fromLocale || locales[0]),
+          toLocale: getSupportedToLocale(locale),
           format: translationFormat,
           translationService: translationServiceValue,
           apiKey: translationApiKey,
-          deeplOptions: {
-            glossaryId: deeplGlossaryId,
-            formality: deeplFormalityLevelValue,
-          },
           openAIOptions: {
             model: modelValue,
             temperature,

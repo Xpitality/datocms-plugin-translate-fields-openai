@@ -29,34 +29,20 @@ export enum TranslationFormat {
 }
 
 export enum TranslationService {
-  yandex = 'yandex',
-  deepl = 'deepl',
-  deeplFree = 'deeplFree',
   openAI = 'openAI',
   mock = 'mock',
 }
 
 export enum TranslationServiceKey {
-  yandexKey = 'yandexApiKey',
-  deeplApiKey = 'deeplApiKey',
-  deeplFreeApiKey = 'deeplFreeApiKey',
   openAIKey = 'openAIApiKey',
   mockKey = 'mockApiKey',
 }
 
 export enum OpenAIDefaultValues {
-  model = 'text-davinci-003',
+  model = 'gpt-4o',
   temperature = 0,
   maxTokens = 100,
   topP = 0,
-}
-
-export enum DeeplFormalityLevel {
-  default = 'default',
-  more = 'more',
-  less = 'less',
-  preferMore = 'prefer_more',
-  preferLess = 'prefer_less',
 }
 
 export type Parameters = {
@@ -65,11 +51,6 @@ export type Parameters = {
   temperature?: number
   maxTokens?: number
   topP?: number
-  deeplGlossaryId?: string
-  deeplFormalityLevel?: SettingOption<DeeplFormalityLevel>
-  [TranslationServiceKey.yandexKey]?: string
-  [TranslationServiceKey.deeplApiKey]?: string
-  [TranslationServiceKey.deeplFreeApiKey]?: string
   [TranslationServiceKey.openAIKey]?: string
   [TranslationServiceKey.mockKey]?: string
 }
@@ -90,10 +71,6 @@ export type TranslationOptions = {
   format: TranslationFormat
   translationService: TranslationService
   apiKey: string
-  deeplOptions?: {
-    glossaryId?: string
-    formality?: DeeplFormalityLevel
-  }
   openAIOptions: {
     model: string
     temperature: number

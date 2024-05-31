@@ -6,8 +6,6 @@ import { toMarkdown } from 'mdast-util-to-markdown'
 import { TranslationOptions, Path, TranslationService, PathType } from './types'
 import { paths, removePropertyRecursively } from './helpers'
 
-import yandexTranslate from './translation-services/yandex'
-import deeplTranslate from './translation-services/deepl'
 import openAITranslate from './translation-services/openAI'
 
 const parseHtml = require('html2json')
@@ -19,13 +17,6 @@ export async function getTranslation(
   switch (options.translationService) {
     case TranslationService.mock: {
       return `Translated ${string}`
-    }
-    case TranslationService.yandex: {
-      return yandexTranslate(string, options)
-    }
-    case TranslationService.deepl:
-    case TranslationService.deeplFree: {
-      return deeplTranslate(string, options)
     }
     case TranslationService.openAI: {
       return openAITranslate(string, options)

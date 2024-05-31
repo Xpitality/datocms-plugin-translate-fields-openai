@@ -1,8 +1,8 @@
 {
-  "name": "datocms-plugin-translate-fields",
-  "homepage": "https://github.com/voorhoede/datocms-plugin-translate-fields",
-  "version": "1.11.0",
-  "description": "A DatoCMS plugin that gives you the ability to translate `structured-text`, `rich-text`, `string`, `text`, `seo` and `slug` fields in DatoCMS",
+  "name": "datocms-plugin-translate-fields-openai",
+  "homepage": "https://github.com/craftzing/datocms-plugin-translate-fields-openai",
+  "version": "1.0.0",
+  "description": "A DatoCMS plugin that gives you the ability to translate `structured-text`, `rich-text`, `string`, `text`, `seo` and `slug` fields in DatoCMS with only openAI",
   "engines": {
     "node": ">=18.0.0"
   },
@@ -73,7 +73,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/voorhoede/datocms-plugin-translate-fields.git"
+    "url": "https://github.com/craftzing/datocms-plugin-translate-fields-openai"
   },
   "author": "Voorhoede",
   "license": "ISC",

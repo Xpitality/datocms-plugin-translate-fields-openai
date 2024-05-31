@@ -9,7 +9,7 @@ const tranlationOptions = {
   translationService: TranslationService.mock,
   apiKey: '',
   openAIOptions: {
-    model: 'text-davinci-003',
+    model: 'gpt-4o',
     temperature: 0,
     maxTokens: 100,
     topP: 0,
@@ -21,41 +21,6 @@ const translatedText = 'Translated test'
 describe('getTranslation', () => {
   it('should return translation', async () => {
     const translation = await getTranslation('test', tranlationOptions)
-    expect(translation).toStrictEqual(translatedText)
-  })
-
-  it('should return translation with yandex response', async () => {
-    fetchMock.mockOnce(JSON.stringify({ text: [translatedText] }))
-    expect.assertions(1)
-
-    const translation = await getTranslation('test', {
-      ...tranlationOptions,
-      translationService: TranslationService.yandex,
-    })
-    expect(translation).toStrictEqual(translatedText)
-  })
-
-  it('should return translation with deepl response', async () => {
-    fetchMock.mockOnce(
-      JSON.stringify({ translations: [{ text: translatedText }] }),
-    )
-
-    const translation = await getTranslation('test', {
-      ...tranlationOptions,
-      translationService: TranslationService.deepl,
-    })
-    expect(translation).toStrictEqual(translatedText)
-  })
-
-  it('should return translation with deepl free response', async () => {
-    fetchMock.mockOnce(
-      JSON.stringify({ translations: [{ text: translatedText }] }),
-    )
-
-    const translation = await getTranslation('test', {
-      ...tranlationOptions,
-      translationService: TranslationService.deeplFree,
-    })
     expect(translation).toStrictEqual(translatedText)
   })
 
